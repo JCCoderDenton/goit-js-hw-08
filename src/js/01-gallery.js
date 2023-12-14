@@ -6,7 +6,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 let gallery = document.querySelector('.gallery');
 
 const imageList = galleryItems.map((element, i, galleryItems) => `
-    <li class="gallery__item">
+    <li class="gallery__item" style="list-style: none">
         <a class="gallery__link" href="${galleryItems[i].original}">
             <img class="gallery__image" src="${galleryItems[i].preview}" alt="${galleryItems[i].description}">
         </a>
