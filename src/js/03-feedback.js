@@ -4,7 +4,7 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-const savedState = localStorage.getItem('feedback-form-state');
+const savedState = JSON.parse(localStorage.getItem('feedback-form-state'));
 
 
 if (savedState !== null ) {
@@ -13,13 +13,14 @@ if (savedState !== null ) {
   formMassage.value = savedState.message;
 }
 console.log("2",localStorage.getItem('feedback-form-state'))
+console.log("22",savedState)
 const saveFormState = throttle(() => {
   const state = {
     email: formEmail.value,
     message: formMassage.value,
   };
   console.log("3",localStorage.getItem('feedback-form-state'))
-  localStorage.setItem('feedback-form-state', state);
+  localStorage.setItem('feedback-form-state', JSON.stringify(state));
 }, 500);
 
 form.addEventListener('input', saveFormState);
