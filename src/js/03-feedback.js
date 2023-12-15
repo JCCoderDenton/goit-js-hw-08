@@ -19,6 +19,7 @@ const saveFormState = throttle(() => {
     email: formEmail.value,
     message: formMassage.value,
   };
+  console.log("3",savedState)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }, 500);
 
@@ -31,7 +32,9 @@ form.addEventListener('submit', event => {
     message: formMassage.value,
   };
   console.log(state);
+  console.log("5",savedState)
   localStorage.removeItem(STORAGE_KEY);
   formEmail.value = '';
   formMassage.value = '';
+  console.log("4",savedState)
 });
