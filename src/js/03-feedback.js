@@ -4,9 +4,9 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-const savedState = localStorage.getItem(STORAGE_KEY);
-const STORAGE_KEY = 'feedback-form-state';
 
+const STORAGE_KEY = 'feedback-form-state';
+const savedState = localStorage.getItem(STORAGE_KEY);
 
 
 if (savedState !== null ) {
