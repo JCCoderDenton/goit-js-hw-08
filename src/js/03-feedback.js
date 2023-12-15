@@ -4,7 +4,7 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-
+let savedState;
 const STORAGE_KEY = 'feedback-form-state';
 
 
@@ -23,7 +23,7 @@ const saveFormState = throttle(() => {
   };
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  const savedState = localStorage.getItem(STORAGE_KEY);
+  savedState = localStorage.getItem(STORAGE_KEY);
   console.log('savedState: ', JSON.parse(savedState));  
 }, 500);
 
