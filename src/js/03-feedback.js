@@ -4,17 +4,13 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-
 const STORAGE_KEY = 'feedback-form-state';
-const savedState = localStorage.getItem(STORAGE_KEY);
-console.log('1 savedState: ', JSON.parse(savedState));  
 
-if (savedState !== null ) {
-  console.log("1");
+const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
+if (savedState) {
   formEmail.value = savedState.email;
   formMassage.value = savedState.message;
 }
-
 
 const saveFormState = throttle(() => {
   const state = {
@@ -28,7 +24,6 @@ form.addEventListener('input', saveFormState);
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  console.log('2 savedState: ', JSON.parse(savedState));  
   const state = {
     email: formEmail.value,
     message: formMassage.value,
@@ -38,14 +33,3 @@ form.addEventListener('submit', event => {
   formEmail.value = '';
   formMassage.value = '';
 });
-
-
-/*
-// Put the object into storage
-localStorage.setItem('testObject', JSON.stringify(testObject));
-
-// Retrieve the object from storage
-let retrievedObject = localStorage.getItem('testObject');
-
-console.log('retrievedObject: ', JSON.parse(retrievedObject));
-*/
