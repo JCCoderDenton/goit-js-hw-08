@@ -4,15 +4,19 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-//const savedState = JSON.parse(localStorage.getItem('feedback-form-state'));
+
+
+const savedState = localStorage.getItem('feedback-form-state');
+console.log('savedState: ', JSON.parse(savedState));
+
 
 
 if (localStorage.getItem('feedback-form-state') !== null ) {
-  console.log("1",localStorage.getItem('feedback-form-state'))
+  console.log("1");
   formEmail.value = savedState.email;
   formMassage.value = savedState.message;
 }
-console.log("2",localStorage.getItem('feedback-form-state'))
+
 
 const saveFormState = throttle(() => {
   const state = {
@@ -38,3 +42,14 @@ form.addEventListener('submit', event => {
   formMassage.value = '';
   console.log("4",localStorage.getItem('feedback-form-state'))
 });
+
+
+/*
+// Put the object into storage
+localStorage.setItem('testObject', JSON.stringify(testObject));
+
+// Retrieve the object from storage
+let retrievedObject = localStorage.getItem('testObject');
+
+console.log('retrievedObject: ', JSON.parse(retrievedObject));
+*/
