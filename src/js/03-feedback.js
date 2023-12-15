@@ -4,25 +4,22 @@ let form = document.forms[0];
 let formEmail = form.elements.email;
 let formMassage = form.elements.message;
 
-
-const STORAGE_KEY = 'feedback-form-state';
-
-const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
+const savedState = JSON.parse(localStorage.getItem('feedback-form-state'));
 
 
-if (savedState) {
-  console.log("1",STORAGE_KEY)
+if (localStorage.getItem('feedback-form-state' !== null )) {
+  console.log("1",localStorage.getItem('feedback-form-state'))
   formEmail.value = savedState.email;
   formMassage.value = savedState.message;
 }
-console.log("2",STORAGE_KEY)
+console.log("2",localStorage.getItem('feedback-form-state'))
 const saveFormState = throttle(() => {
   const state = {
     email: formEmail.value,
     message: formMassage.value,
   };
-  console.log("3",STORAGE_KEY)
-  localStorage.setItem(STORAGE_KEY, state);
+  console.log("3",localStorage.getItem('feedback-form-state'))
+  localStorage.setItem('feedback-form-state', state);
 }, 500);
 
 form.addEventListener('input', saveFormState);
@@ -34,9 +31,9 @@ form.addEventListener('submit', event => {
     message: formMassage.value,
   };
   console.log(state);
-  console.log("5",STORAGE_KEY)
-  localStorage.removeItem(STORAGE_KEY);
+  console.log("5",localStorage.getItem('feedback-form-state'))
+  localStorage.removeItem(localStorage.getItem('feedback-form-state'));
   formEmail.value = '';
   formMassage.value = '';
-  console.log("4",STORAGE_KEY)
+  console.log("4",localStorage.getItem('feedback-form-state'))
 });
