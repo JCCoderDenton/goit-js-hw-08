@@ -14,14 +14,14 @@ const STORAGE_KEY = 'feedback-form-state';
 
 const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
 if (savedState) {
-  formEmail = savedState.email;
-  formMassage = savedState.message;
+  formEmail.value = savedState.email;
+  formMassage.value = savedState.message;
 }
 
 const saveFormState = throttle(() => {
   const state = {
-    email: formEmail,
-    message: formMassage,
+    email: formEmail.value,
+    message: formMassage.value,
   };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }, 500);
@@ -31,11 +31,11 @@ form.addEventListener('input', saveFormState);
 form.addEventListener('submit', event => {
   event.preventDefault();
   const state = {
-    email: formEmail,
-    message: formMassage,
+    email: formEmail.value,
+    message: formMassage.value,
   };
   console.log(state);
   localStorage.removeItem(STORAGE_KEY);
-  formEmail = '';
-  formMassage = '';
+  formEmail.value = '';
+  formMassage.value = '';
 });
