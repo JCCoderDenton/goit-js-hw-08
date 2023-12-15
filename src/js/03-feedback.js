@@ -8,7 +8,7 @@ let formMassage = form.elements.message;
 const STORAGE_KEY = 'feedback-form-state';
 
 const savedState = JSON.parse(localStorage.getItem(STORAGE_KEY));
-if (savedState) {
+if (savedState.getItem(STORAGE_KEY) !== null) {
   formEmail.value = savedState.email;
   formMassage.value = savedState.message;
 }
