@@ -7,7 +7,7 @@ let formMassage = form.elements.message;
 
 const STORAGE_KEY = 'feedback-form-state';
 const savedState = localStorage.getItem(STORAGE_KEY);
-
+console.log('1 savedState: ', JSON.parse(savedState));  
 
 if (savedState !== null ) {
   console.log("1");
@@ -21,16 +21,14 @@ const saveFormState = throttle(() => {
     email: formEmail.value,
     message: formMassage.value,
   };
-
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  savedState = localStorage.getItem(STORAGE_KEY);
-  console.log('savedState: ', JSON.parse(savedState));  
 }, 500);
 
 form.addEventListener('input', saveFormState);
 
 form.addEventListener('submit', event => {
   event.preventDefault();
+  console.log('2 savedState: ', JSON.parse(savedState));  
   const state = {
     email: formEmail.value,
     message: formMassage.value,
